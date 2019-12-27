@@ -5,8 +5,11 @@ import React from 'react';
 import confLogo from '../images/badge-header.svg' 
 import "./styles/Badge.css" //Asi importamos elementos css sin usar variables.
 
+//LOS PROS son los argumentos de una funcion (son atributos de nuestros componentes)
 class Badge extends React.Component{
     render(){
+       // this.props; //Esta propiedades ya vienen incluidas
+
         return (
             <div className="Badge">
                 <div className="Badge-header">
@@ -14,13 +17,13 @@ class Badge extends React.Component{
                 </div>
 
                 <div className="Badge-section-name">
-                    <img className="Badge-avatar" src="https://s.gravatar.com/avatar/2955bda6ec83c5e8bfd8389803db8813?s=80" alt="Avatar"/>
-                    <h1>Luis <br/> Villegas</h1>
+                    <img className="Badge-avatar" src={this.props.avatar} alt="Avatar"/>
+                    <h1>{this.props.firstName} <br/> {this.props.lastName}</h1>
                 </div>
 
                 <div className="Bagde-section-info">
-                    <h3>Frontend Engineer</h3>
-                    <div>@Boogst</div>
+                    <h3>{this.props.jobTitle}</h3>
+                    <div>@{this.props.twitter}</div>
                 </div>
 
                 <div className="Badge-footer">
