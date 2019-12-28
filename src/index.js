@@ -15,6 +15,4 @@ import BadgeNew from './pages/BadgeNew';
 const container = document.getElementById('app');
 
 // ReactDOM.render(__qué__, __dónde__);
-ReactDOM.render(
-<BadgeNew />,
-container);
+ReactDOM.render(<BadgeNew />, container);
