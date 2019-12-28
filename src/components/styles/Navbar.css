@@ -1,0 +1,16 @@
+.Navbar{
+    background-color: #1c3643;
+    padding: 0.5rem 0.5rem;
+
+}
+.Navbar a,
+.Navbar a:hover{
+    text-decoration: none;
+    color: #ffffff;
+}
+.Navbar a span{
+    margin-right: 0.5rem;
+}
+.Navbar a span:last-of-type{
+    margin-right: 0;
+}
