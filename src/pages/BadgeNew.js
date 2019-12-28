@@ -19,7 +19,7 @@ class BadgeNew extends React.Component{
         lastName: '',
         twitter: '',
         email: '',
-        jobTitle: "Frontend Engineer",
+        jobTitle: '',
         avatar: ''
     } };
 
@@ -27,12 +27,13 @@ class BadgeNew extends React.Component{
         this.setState({
             form: {
                 ...this.state.form,
-                [e.target.name]: e.target.value
+                [e.target.name]: e.target.value //pasa PASAR una nueva variable o sobreescribir(si ya existe) la variable el objeto utilizamos [key]:
             }
         });
     }
 
     render(){
+        const {firstName, lastName, email, jobTitle, twitter} = this.state.form;
         return (
             <div>
                 <Navbar />
@@ -44,11 +45,11 @@ class BadgeNew extends React.Component{
                     <div className="row">
                         <div className="col-6">
                             <Badge 
-                                firstName={this.state.form.firstName}
-                                lastName={this.state.form.lastName}
-                                twitter={this.state.form.twitter}
-                                email={this.state.form.email}
-                                jobTitle={this.state.form.jobTitle}
+                                firstName={firstName}
+                                lastName={lastName}
+                                twitter={twitter}
+                                email={email}
+                                jobTitle={jobTitle}
                                 avatar="https://s.gravatar.com/avatar/2955bda6ec83c5e8bfd8389803db8813?s=80"
                             />
                         </div>

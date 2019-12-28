@@ -9,7 +9,7 @@ import "./styles/Badge.css" //Asi importamos elementos css sin usar variables.
 class Badge extends React.Component{
     render(){
        // this.props; //Esta propiedades ya vienen incluidas
-
+        const {avatar, firstName, lastName, jobTitle, twitter} = this.props;
         return (
             <div className="Badge">
                 <div className="Badge-header">
@@ -17,13 +17,13 @@ class Badge extends React.Component{
                 </div>
 
                 <div className="Badge-section-name">
-                    <img className="Badge-avatar" src={this.props.avatar} alt="Avatar"/>
-                    <h1>{this.props.firstName} <br/> {this.props.lastName}</h1>
+                    <img className="Badge-avatar" src={avatar} alt="Avatar"/>
+                    <h1>{firstName} <br/> {lastName}</h1>
                 </div>
 
                 <div className="Bagde-section-info">
-                    <h3>{this.props.jobTitle}</h3>
-                    <div>@{this.props.twitter}</div>
+                    <h3>{jobTitle}</h3>
+                    <div>@{twitter}</div>
                 </div>
 
                 <div className="Badge-footer">
