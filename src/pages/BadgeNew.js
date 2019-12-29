@@ -32,7 +32,7 @@ class BadgeNew extends React.Component{
     }
 
     render(){
-
+        
         const {firstName, lastName, email, jobTitle, twitter} = this.state.form;
         return ( //para quitar los DIV usamos React.Fragment
             <React.Fragment>

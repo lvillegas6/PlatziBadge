@@ -1,7 +1,14 @@
 import React from 'react';
 
+import './styles/NotFound.css';
+
 function NotFound(){
-    return <h1>404: Not Found</h1>
+    return (
+        <div className="NotFound">
+            <h1>404</h1>
+            <p>Page not found</p>
+        </div>
+    );
 }
 
 export default NotFound;

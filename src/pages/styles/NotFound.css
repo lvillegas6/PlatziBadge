@@ -1,0 +1,23 @@
+img{
+    max-width: 100%;
+    object-fit: cover;
+}
+.NotFound{
+    background-image: url('../../images/stars.svg');
+    background-color: #1B1B25;
+    height: 100vh;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+.NotFound h1{
+    font-size: 15vw;
+}
+.NotFound p{
+    font-weight: 300;
+    font-size: 7vw;
+}

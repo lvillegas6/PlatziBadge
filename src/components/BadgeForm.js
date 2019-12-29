@@ -25,7 +25,7 @@ class BadgeForm extends React.Component{
 
 
     render(){
-
+        
         const {onChange, formValues} = this.props;
         const {firstName, lastName, email, jobTitle, twitter} = formValues;
 
