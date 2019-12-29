@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Badges from '../pages/Badges';
 import BadgeNew from '../pages/BadgeNew';
 import Leyout from './Leyout';
-import NotFound from '../pages/NotFound'
+import Error from '../pages/Error';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -25,7 +25,9 @@ function App() {
                     <Route exact path="/" component={Home} />
                     <Route exact path="/badges" component={Badges} />
                     <Route exact path="/badges/new" component={BadgeNew} />
-                    <Route path="/404" component={NotFound} />
+                    <Route path="/404" render={
+                        (props) => <Error type="404" errorText="Page not found" />
+                    }/>
                     <Redirect from="*" to="/404"/>
                 </Switch>
             </Leyout>

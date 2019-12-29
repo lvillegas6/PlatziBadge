@@ -16,7 +16,7 @@ class Home extends React.Component {
                             <h2>Print your badges</h2>
                             <p>The easiest way to manage your <br/> conference</p>
                             <div className="Home-buttons">
-                                <Link to="/" className="btn btn-primary">Start now</Link>
+                                <Link to="/badges/new" className="btn btn-primary">Start now</Link>
                             </div>
                         </div>
                         <div className="Home-image">

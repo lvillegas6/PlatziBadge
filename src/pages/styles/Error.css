@@ -2,7 +2,7 @@ img{
     max-width: 100%;
     object-fit: cover;
 }
-.NotFound{
+.Error{
     background-image: url('../../images/stars.svg');
     background-color: #1B1B25;
     height: 100vh;
@@ -14,10 +14,10 @@ img{
     align-items: center;
     color: #ffffff;
 }
-.NotFound h1{
+.Error h1{
     font-size: 15vw;
 }
-.NotFound p{
+.Error p{
     font-weight: 300;
     font-size: 7vw;
 }

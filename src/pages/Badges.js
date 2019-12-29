@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import './styles/Badges.css'
 import confLogo from '../images/badge-header.svg'
 import BadgesList from '../components/BadgesList';
+import Loading from '../pages/Loading';
+import Error from '../pages/Error';
 import api from '../api';
 //MONTAJE
 //representa el momento donde se inserta el código del componente en el DOM
@@ -54,10 +56,10 @@ class Badges extends React.Component {
         const {loading, error, data} = this.state;
 
         if (loading) 
-            return 'Loadin...';
+            return <Loading />;
     
         if (error) 
-            return `Error: ${this.state.error.message}`;
+            return <Error type="500" errorText={this.state.error.message}/>;
         
         return ( //para quitar los DIV usamos React.Fragment
             <React.Fragment>
