@@ -3,30 +3,25 @@ import React from 'react';
 import './styles/BadgesList.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
+import Gravatar from './Gravatar';
 
-class BadgesList extends React.Component {
-    render() {
-        if(this.props.badges.length === 0){
-            return(
-                <React.Fragment>
-                    <h3>No badges were found</h3>
-                    <Link className="btn btn-primary" to="/badges/new">
-                        Create new badge
-                    </Link>
-                </React.Fragment>
-            );
-        }
+
+const BadgesList = props => {
+
+    const badgesList = props.badges.slice(0).reverse();
+
+    if (badgesList.length > 0) {
         return (
             <ul className="list-unstyled">
-                {this.props.badges.map(badge => {
-                    const {id, avatarUrl, firstName, lastName, twitter, jobTitle} = badge;
+                {badgesList.map(badge => {
+                    const { id, firstName, lastName, twitter, jobTitle, email } = badge;
                     //Para color contenido JSX debemos colocar un return
                     ///key es un identificador unico cuando listamanos elementos. Ayuda a react para determinar
                     //cuando el elemento se vuelve a renderizar, es decir, saber si se mantuvo en la lista o cambio.
                     return (
                         <li key={id} className="BadgesList-elements">
                             <div className="BadgesList-avatar">
-                                <img src={avatarUrl} alt="avatar"/>
+                                <Gravatar email={email} />
                             </div>
                             <div className="BadgesList-section-info">
                                 <h3>{firstName} {lastName}</h3>
@@ -37,6 +32,15 @@ class BadgesList extends React.Component {
                     );
                 })}
             </ul>
+        );
+    } else {
+        return (
+            <React.Fragment>
+                <h3>No badges were found</h3>
+                <Link className="btn btn-primary" to="/badges/new">
+                    Create new badge
+                </Link>
+            </React.Fragment>
         );
     }
 }

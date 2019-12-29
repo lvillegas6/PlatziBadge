@@ -18,6 +18,8 @@ function App() {
     //Con Switch solo se renderiza una solo pagina
     //Route: representa una direccion de internet(es igual a <a /> ) es para colocar la ruta url y 
     //el componenete a renderizar. Se la añadimos el props de "exact" entonces la ruta debe ser IDENTICA.
+    //Los componentes que se colocan en el router reciben tres props: match, history, location.
+    //Estos proveen informacion sobre la direccion de internert en la que esta la app ahora mismo.
     return ( //lEYOUT: Todo lo que esta dentro de leyout es su CONTANIDO(children)
         <BrowserRouter>
             <Leyout> 

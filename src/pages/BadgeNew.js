@@ -2,10 +2,14 @@ import React from 'react';
 
 import Badge from '../components/Badge';
 import BadgeForm from '../components/BadgeForm'
-import header from '../images/badge-header.svg';
+import api from '../api';
+import Loading from './Loading';
+
+import header from '../images/platziconf-logo.svg';
 import './styles/BadgeNew.css';
 
-class BadgeNew extends React.Component{
+
+class BadgeNew extends React.Component {
 
     //Con esto LEVANTAMOS EL ESTADO
     //Es una técnica de React que pone el estado en una localizacion(como SUPERIOR) donde se le pueda pasar como props(argumentos) a los componentes
@@ -13,16 +17,20 @@ class BadgeNew extends React.Component{
     //---
     //Lo que le da el nombre a React es su parte de 'reactivo' ya que cada vez que hay un cambio en el ESTADO o en los PROPS que recibe
     //un componente se vuelve a renderizar todo el componente y todos us descendientes.
-    state = { form: {
-        firstName: '',
-        lastName: '',
-        twitter: '',
-        email: '',
-        jobTitle: '',
-        avatar: ''
-    } };
+    state = {
+        loading: false,
+        error: null,
+        form: {
+            firstName: '',
+            lastName: '',
+            twitter: '',
+            email: '',
+            jobTitle: '',
+            avatar: ''
+        }
+    };
 
-    handleChange = e =>{
+    handleChange = e => {
         this.setState({
             form: {
                 ...this.state.form,
@@ -31,31 +39,56 @@ class BadgeNew extends React.Component{
         });
     }
 
-    render(){
+    handleSubmit = async e => {
+        e.preventDefault();
+
+        this.setState({ loading: true, error: null })
+        const { form } = this.state//para leer los valores usamos this.state
+
+        try {
+
+            await api.badges.create(form);
+            this.setState({ loading: false, error: null })
+
+            //Estos props los reciben las paginas. Las paginas se las estamos dando a los Router
+            //La ruta le va a pasar 3 props, match, history y location
+            this.props.history.push('/badges'); 
+        } catch (error) {
+            this.setState({ loading: false, error })
+        }
+    }
+
+    render() {
+
+        const {form, loading, error} = this.state;
+        const { firstName, lastName, email, jobTitle, twitter } = form;
+
+        if(loading)
+            return <Loading />
         
-        const {firstName, lastName, email, jobTitle, twitter} = this.state.form;
         return ( //para quitar los DIV usamos React.Fragment
             <React.Fragment>
                 <div className="BadgeNew-hero">
-                    <img className="img-fluid" src={header} alt="hero"/>
+                    <img className="BadgeNew-hero-img img-fluid" src={header} alt="hero" />
                 </div>
-               
+
                 <div className="container">
                     <div className="row">
                         <div className="col-6">
-                            <Badge 
-                                firstName={firstName}
-                                lastName={lastName}
-                                twitter={twitter}
-                                email={email}
-                                jobTitle={jobTitle}
-                                avatar="https://s.gravatar.com/avatar/2955bda6ec83c5e8bfd8389803db8813?s=80"
+                            <Badge
+                                firstName={firstName ||  'First name'} 
+                                lastName={lastName  || 'Last name'}
+                                twitter={twitter || 'twitter'}
+                                email={email || 'email'}
+                                jobTitle={jobTitle || 'Job title'}
                             />
                         </div>
                         <div className="col-6">
-                            <BadgeForm 
-                                onChange={this.handleChange} 
+                            <BadgeForm
+                                onSubmit={this.handleSubmit}
+                                onChange={this.handleChange}
                                 formValues={this.state.form}
+                                error={error}
                             />
                         </div>
                     </div>

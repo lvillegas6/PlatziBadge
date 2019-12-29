@@ -13,26 +13,15 @@ class BadgeForm extends React.Component{
     //    });
     //}
 
-    handleClick = e => {
-        console.log("click")
-    }
-
-    handleSubmit = e => {
-        e.preventDefault();
-        console.log("Sibmit")
-        console.log(this.state) //para leer los valores usamos this.state
-    }
-
-
     render(){
         
-        const {onChange, formValues} = this.props;
+        const {onChange, onSubmit, formValues, error} = this.props;
         const {firstName, lastName, email, jobTitle, twitter} = formValues;
 
         return(
             <React.Fragment>
                 <h1>New Attendant</h1>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={onSubmit}>
                     
                     <div className="form-group">
                         <label>First Name</label>
@@ -87,8 +76,12 @@ class BadgeForm extends React.Component{
                             value={twitter}
                         />
                     </div>
-
                     <button onClick={this.handleClick} className="btn btn-primary">Save</button>
+
+                    {error && (
+                        <p className="text-danger">{error.message}</p>
+                    )}
+                    
                 </form>
             </React.Fragment>
         );
