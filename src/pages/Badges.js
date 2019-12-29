@@ -1,10 +1,11 @@
 import React from 'react';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './styles/Badges.css'
 import confLogo from '../images/badge-header.svg'
 import BadgesList from '../components/BadgesList';
+import api from '../api';
 //MONTAJE
 //representa el momento donde se inserta el código del componente en el DOM
 //se llaman tres métodos en este ORDEN: constructor, render, componentDidMout
@@ -16,92 +17,67 @@ import BadgesList from '../components/BadgesList';
 //Desmontaje
 //Nos da la importunidad de hacer limpienza de nuestros componentes
 //Se llama un método: ComponentWillUnmount()
-class Badges extends React.Component{
+class Badges extends React.Component {
 
-    constructor(props){
-        super(props)
-        
-        console.log('1. Constructor');
-        this.state = {
-            data: []
+    state = {
+        loading: true,
+        error: null,
+        data: undefined
+    }
+
+
+    componentDidMount() { //Este es el mejor lugar para comenzar una peticion.
+        //peticion GET
+        //es cyakqyuer kkanada a la que se soliciten datos.
+        //peticion POST
+        //Es cuando se envian datos.
+        //PUT
+        //Cuando se modifican datos.
+        //DELETE
+        //cuando se eliminan datos
+        this.fechtData();
+    }
+
+    fechtData = async () => {
+        this.setState({ loading: true, error: null });
+
+        try {
+            const data = await api.badges.list();
+            this.setState({ loading: false, data });
+        } catch (error) {
+            this.setState({ loading: false, error });
         }
     }
 
-    componentDidMount(){
-        console.log('3. componentDidMount()');
+    render() {
 
-        this.timeoutId = setTimeout(() => { //Se cambia el stage se vuelve a ejecutar el render.
-            this.setState({
-                data: [
-                    {
-                      "id": "2de30c42-9deb-40fc-a41f-05e62b5939a7",
-                      "firstName": "Luis",
-                      "lastName": "Villegas",
-                      "email": "theeniig@gmail.com",
-                      "jobTitle": "Frontend Engineer",
-                      "twitter": "Boogst",
-                      "avatarUrl": "https://s.gravatar.com/avatar/2955bda6ec83c5e8bfd8389803db8813?s=80"
-                    },
-                    {
-                      "id": "d00d3614-101a-44ca-b6c2-0be075aeed3d",
-                      "firstName": "Major",
-                      "lastName": "Rodriguez",
-                      "email": "Ilene66@hotmail.com",
-                      "jobTitle": "Human Research Architect",
-                      "twitter": "MajorRodriguez61545",
-                      "avatarUrl": "https://www.gravatar.com/avatar/d57a8be8cb9219609905da25d5f3e50a?d=identicon"
-                    },
-                    {
-                      "id": "63c03386-33a2-4512-9ac1-354ad7bec5e9",
-                      "firstName": "Daphney",
-                      "lastName": "Torphy",
-                      "email": "Ron61@hotmail.com",
-                      "jobTitle": "National Markets Officer",
-                      "twitter": "DaphneyTorphy96105",
-                      "avatarUrl": "https://www.gravatar.com/avatar/e74e87d40e55b9ff9791c78892e55cb7?d=identicon"
-                    }
-                ] 
-            })
-        }, 3000);
-    }
+        const {loading, error, data} = this.state;
 
-    componentDidUpdate(prevProps, prevState){
-        console.log('5. ComponentDidUpdate()')
-        console.log({
-            prevProps,
-            prevState
-        })
-
-        console.log({
-            props: this.props,
-            state: this.state
-        })
-    }
-
-    componentWillUnmount(){
-        console.log('6. componentWillUnmount()')
-        clearTimeout(this.timeoutId);
-    }
-
-    render(){
-        console.log('2/4. Render()');
+        if (loading) 
+            return 'Loadin...';
+    
+        if (error) 
+            return `Error: ${this.state.error.message}`;
+        
         return ( //para quitar los DIV usamos React.Fragment
             <React.Fragment>
                 <div className="Badges">
                     <div className="Badges-container">
-                        <img className="Badges-conf-logo" src={confLogo} alt="confLogo"/>
+                        <img className="Badges-conf-logo" src={confLogo} alt="confLogo" />
                     </div>
                 </div>
 
-                <div className="Badges-container">
-                    <div className="Badges-buttons">
-                        <Link className="btn btn-primary" to="/badges/new">New Badge</Link>
+                {!(data.length === 0) && (
+                    <div className="Badges-container">
+                        <div className="Badges-buttons">
+                            <Link className="btn btn-primary" to="/badges/new">New Badge</Link>
+                        </div>
                     </div>
-                </div>
+                )}
 
                 <div className="Badges-list">
                     <div className="Badges-container">
-                        <BadgesList badges={this.state.data}/>
+                        <BadgesList badges={this.state.data} />
                     </div>
                 </div>
             </React.Fragment>
