@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Link} from 'react-router-dom';
+
 import './styles/Badges.css'
 import confLogo from '../images/badge-header.svg'
 import Navbar from '../components/Navbar';
@@ -51,7 +53,7 @@ class Badges extends React.Component{
 
                 <div className="Badges-container">
                     <div className="Badges-buttons">
-                        <a className="btn btn-primary" href="/badges/new">New Badge</a>
+                        <Link className="btn btn-primary" to="/badges/new">New Badge</Link>
                     </div>
                 </div>
 
