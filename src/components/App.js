@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import Badges from '../pages/Badges';
 import BadgeNew from '../pages/BadgeNew';
@@ -8,6 +8,7 @@ import NotFound from '../pages/NotFound'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
+import Home from '../pages/Home';
 
 
 library.add(fab);
@@ -21,9 +22,11 @@ function App() {
         <BrowserRouter>
             <Leyout> 
                 <Switch>
+                    <Route exact path="/" component={Home} />
                     <Route exact path="/badges" component={Badges} />
                     <Route exact path="/badges/new" component={BadgeNew} />
-                    <Route component={NotFound} />
+                    <Route path="/404" component={NotFound} />
+                    <Redirect from="*" to="/404"/>
                 </Switch>
             </Leyout>
         </BrowserRouter>
