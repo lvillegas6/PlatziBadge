@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 
 import './styles/Badges.css'
 import confLogo from '../images/badge-header.svg'
-import Navbar from '../components/Navbar';
 import BadgesList from '../components/BadgesList';
 
 class Badges extends React.Component{
@@ -42,9 +41,8 @@ class Badges extends React.Component{
     }
 
     render(){
-        return (
-            <div>
-                <Navbar />
+        return ( //para quitar los DIV usamos React.Fragment
+            <React.Fragment>
                 <div className="Badges">
                     <div className="Badges-container">
                         <img className="Badges-conf-logo" src={confLogo} alt="confLogo"/>
@@ -62,8 +60,7 @@ class Badges extends React.Component{
                         <BadgesList badges={this.state.data}/>
                     </div>
                 </div>
-
-            </div>
+            </React.Fragment>
         );
     }
 }

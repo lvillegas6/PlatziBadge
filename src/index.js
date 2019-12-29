@@ -12,6 +12,7 @@ import App from './components/App';
 import 'bootstrap/dist/css/bootstrap.css' //import '/bootstrap'; los modulos se importan simplemente con el nombre de la carpeta.
 import './global.css'
 
+//React.createElement(elemento, props, innerHtml);
 const container = document.getElementById('app');
 
 // ReactDOM.render(__qué__, __dónde__);
