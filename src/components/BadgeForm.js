@@ -20,7 +20,6 @@ class BadgeForm extends React.Component{
 
         return(
             <React.Fragment>
-                <h1>New Attendant</h1>
                 <form onSubmit={onSubmit}>
                     
                     <div className="form-group">

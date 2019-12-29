@@ -20,14 +20,16 @@ const BadgesList = props => {
                     //cuando el elemento se vuelve a renderizar, es decir, saber si se mantuvo en la lista o cambio.
                     return (
                         <li key={id} className="BadgesList-elements">
-                            <div className="BadgesList-avatar">
-                                <Gravatar email={email} />
-                            </div>
-                            <div className="BadgesList-section-info">
-                                <h3>{firstName} {lastName}</h3>
-                                <p className="BadgesList-jobTitle">{jobTitle}</p>
-                                <p className="BadgesList-twitter"><span><FontAwesomeIcon icon={['fab', 'twitter']} />{twitter}</span></p>
-                            </div>
+                            <Link className="text-reset text-decoration-none" to={`/badges/${badge.id}/edit`}>
+                                <div className="BadgesList-avatar">
+                                    <Gravatar email={email} />
+                                </div>
+                                <div className="BadgesList-section-info">
+                                    <h3>{firstName} {lastName}</h3>
+                                    <p className="BadgesList-jobTitle">{jobTitle}</p>
+                                    <p className="BadgesList-twitter"><span><FontAwesomeIcon icon={['fab', 'twitter']} />{twitter}</span></p>
+                                </div>
+                            </Link>
                         </li>
                     );
                 })}

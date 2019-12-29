@@ -7,9 +7,10 @@ import Loading from './Loading';
 
 import header from '../images/platziconf-logo.svg';
 import './styles/BadgePage.css';
+import { faGalacticSenate } from '@fortawesome/free-brands-svg-icons';
 
 
-class BadgeNew extends React.Component {
+class BadgeEdit extends React.Component {
 
     //Con esto LEVANTAMOS EL ESTADO
     //Es una técnica de React que pone el estado en una localizacion(como SUPERIOR) donde se le pueda pasar como props(argumentos) a los componentes
@@ -18,7 +19,7 @@ class BadgeNew extends React.Component {
     //Lo que le da el nombre a React es su parte de 'reactivo' ya que cada vez que hay un cambio en el ESTADO o en los PROPS que recibe
     //un componente se vuelve a renderizar todo el componente y todos us descendientes.
     state = {
-        loading: false,
+        loading: true,
         error: null,
         form: {
             firstName: '',
@@ -29,6 +30,25 @@ class BadgeNew extends React.Component {
             avatar: ''
         }
     };
+
+    componentDidMount(){
+        this.fechData();
+    }
+
+    fechData = async e =>{
+        this.setState({loading: true, error: null})
+
+        try{
+            const data = await api.badges.read(
+                this.props.match.params.badgeId //Con match obtenemos los valores de la URL
+            );
+
+            this.setState({loading: false, form: data})
+        }catch(error){
+            this.setState({loading: false, error})
+        }
+
+    }
 
     handleChange = e => {
         this.setState({
@@ -47,7 +67,7 @@ class BadgeNew extends React.Component {
 
         try {
 
-            await api.badges.create(form);
+            await api.badges.update(this.props.match.params.badgeId, form);
             this.setState({ loading: false, error: null })
 
             //Estos props los reciben las paginas. Las paginas se las estamos dando a los Router
@@ -84,7 +104,7 @@ class BadgeNew extends React.Component {
                             />
                         </div>
                         <div className="col-6">
-                            <h1>New Attendant</h1>
+                            <h1>Edit Attendant</h1>
                             <BadgeForm
                                 onSubmit={this.handleSubmit}
                                 onChange={this.handleChange}
@@ -99,4 +119,4 @@ class BadgeNew extends React.Component {
     }
 }
 
-export default BadgeNew;
+export default BadgeEdit;
