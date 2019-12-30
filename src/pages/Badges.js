@@ -39,11 +39,11 @@ class Badges extends React.Component {
         //cuando se eliminan datos
         this.fechtData();
 
-        this.interval = setInterval(this.fechtData, 5000);
+        //this.interval = setInterval(this.fechtData, 5000);
     }
 
     componentWillUnmount(){
-        clearInterval(this.interval);
+        //clearInterval(this.interval);
     }
 
     fechtData = async () => {
