@@ -38,6 +38,12 @@ class Badges extends React.Component {
         //DELETE
         //cuando se eliminan datos
         this.fechtData();
+
+        this.interval = setInterval(this.fechtData, 5000);
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.interval);
     }
 
     fechtData = async () => {
@@ -55,7 +61,7 @@ class Badges extends React.Component {
 
         const {loading, error, data} = this.state;
 
-        if (loading) 
+        if (loading && !data) 
             return <Loading />;
     
         if (error) 

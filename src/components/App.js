@@ -10,6 +10,7 @@ import Error from '../pages/Error';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import Home from '../pages/Home';
+import BadgeDetailsContainer from '../pages/BadgeDetailsContainer';
 
 
 library.add(fab);
@@ -32,6 +33,7 @@ function App() {
                     <Route exact path="/badges" component={Badges} />
                     <Route exact path="/badges/new" component={BadgeNew} />
                     <Route exact path="/badges/:badgeId/edit" component={BadgeEdit} />
+                    <Route exact path="/badges/:badgeId" component={BadgeDetailsContainer} />
                     <Route path="/404" render={
                         (props) => <Error type="404" errorText="Page not found" />
                     }/>

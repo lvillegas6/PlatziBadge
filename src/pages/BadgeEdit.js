@@ -7,7 +7,6 @@ import Loading from './Loading';
 
 import header from '../images/platziconf-logo.svg';
 import './styles/BadgePage.css';
-import { faGalacticSenate } from '@fortawesome/free-brands-svg-icons';
 
 
 class BadgeEdit extends React.Component {
