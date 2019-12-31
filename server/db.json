@@ -10,24 +10,6 @@
       "avatarUrl": "https://www.gravatar.com/avatar/f63a9c45aca0e7e7de0782a6b1dff40b?d=identicon"
     },
     {
-      "id": "d00d3614-101a-44ca-b6c2-0be075aeed3d",
-      "firstName": "Major",
-      "lastName": "Rodriguez",
-      "email": "Ilene66@hotmail.com",
-      "jobTitle": "Human Research Architect",
-      "twitter": "MajorRodriguez61545",
-      "avatarUrl": "https://www.gravatar.com/avatar/d57a8be8cb9219609905da25d5f3e50a?d=identicon"
-    },
-    {
-      "id": "63c03386-33a2-4512-9ac1-354ad7bec5e9",
-      "firstName": "Daphney",
-      "lastName": "Torphy",
-      "email": "Ron61@hotmail.com",
-      "jobTitle": "National Markets Officer",
-      "twitter": "DaphneyTorphy96105",
-      "avatarUrl": "https://www.gravatar.com/avatar/e74e87d40e55b9ff9791c78892e55cb7?d=identicon"
-    },
-    {
       "id": "a9748581-dfdc-4a78-930d-5205a2ccef48",
       "firstName": "Tatyana",
       "lastName": "Von",
@@ -80,15 +62,6 @@
       "jobTitle": "Lead Interactions Officer",
       "twitter": "NovaBergstrom48167",
       "avatarUrl": "https://www.gravatar.com/avatar/e65037a095cfcc6aec56cad1a2128207?d=identicon"
-    },
-    {
-      "id": "eb28f57f-6448-4d40-8f57-8db27831a605",
-      "firstName": "Myrtle",
-      "lastName": "Torphy",
-      "email": "Torrance.Gaylord@yahoo.com",
-      "jobTitle": "Lead Directives Liaison",
-      "twitter": "MyrtleTorphy42588-6517",
-      "avatarUrl": "https://www.gravatar.com/avatar/03b84b35e3a31f091a07910da97ff46a?d=identicon"
     },
     {
       "id": "052e04c9-6386-400c-8794-c1ac8f794a75",
@@ -442,15 +415,6 @@
       "id": "npaYZKI"
     },
     {
-      "firstName": "Luis",
-      "lastName": "Villegas",
-      "twitter": "boogst",
-      "email": "theeniig@gmail.com",
-      "jobTitle": "Frontend Engineer",
-      "avatar": "",
-      "id": "WtDrEQa"
-    },
-    {
       "firstName": "Brian",
       "lastName": "Coronel",
       "twitter": "brian",
@@ -458,6 +422,15 @@
       "jobTitle": "designer",
       "avatar": "",
       "id": "W8Kz_hv"
+    },
+    {
+      "firstName": "Luis",
+      "lastName": "Villegas",
+      "twitter": "boogst",
+      "email": "theeniig@gmail.com",
+      "jobTitle": "Frontend Engineer",
+      "avatar": "",
+      "id": "6Wml5NA"
     }
   ]
 }
