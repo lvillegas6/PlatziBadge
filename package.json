@@ -1,9 +1,11 @@
 {
+  "homepage": "git@github.com:Boogst/PlatziBadge.git",
   "name": "platzi-badges",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "npm-run-all -p client server",
+    "deploy": "gh.pages -d build",
     "client": "react-scripts start",
     "server": "json-server --port 3001 --watch server/db.json",
     "seed": "node server/seed.js",
@@ -25,6 +27,7 @@
   },
   "devDependencies": {
     "faker": "^4.1.0",
+    "gh-pages": "^2.1.1",
     "json-server": "^0.14.2",
     "npm-run-all": "^4.1.5"
   },
